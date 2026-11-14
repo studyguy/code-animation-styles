@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>preview stage</title>
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block}</style>
+</head>
+<body>
+<canvas id="cv" width="1280" height="720"></canvas>
+<script src="../风格提示词/A-G_代码样片/_公共函数.js"></script>
+<script src="kit.js"></script>
+<script src="specs.js"></script>
+<script src="custom.js"></script>
+<script src="x1.js"></script>
+<script src="x2.js"></script>
+<script src="v.js"></script>
+<script src="hz.js"></script>
+<script src="k1.js"></script>
+<script src="k2.js"></script>
+<script src="m1.js"></script>
+<script src="m2.js"></script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var id = q.get('id') || 'V1';
+  var t = parseFloat(q.get('t') || '2');
+  var cv = document.getElementById('cv');
+  var ctx = cv.getContext('2d');
+  try {
+    if (window.CUSTOM && window.CUSTOM[id]) {
+      window.CUSTOM[id](ctx, cv.width, cv.height, t, {});
+    } else if (window.SPECS && window.SPECS[id]) {
+      window.KIT.drawPoster(ctx, cv.width, cv.height, window.SPECS[id]);
+    } else {
+      throw new Error('没有这个风格的渲染器: ' + id);
+    }
+  } catch (e) {
+    window.__error = String((e && e.stack) || e);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.fillStyle = '#2a0b0b'; ctx.fillRect(0, 0, cv.width, cv.height);
+    ctx.fillStyle = '#ff9b9b'; ctx.font = '28px monospace';
+    ctx.fillText(window.__error.slice(0, 300), 40, 80);
+  }
+  window.__ready = true;
+})();
+</script>
+</body>
+</html>
