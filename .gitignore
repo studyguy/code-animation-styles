@@ -2,7 +2,12 @@
 preview/out/
 preview/samples/
 __pycache__/
+**/__pycache__/
 *.pyc
+*.tmp
+*.log
+*.bak
+*~
 
 # 系统
 .DS_Store
@@ -12,3 +17,4 @@ desktop.ini
 # 编辑器
 .vscode/
 .idea/
+*.swp
