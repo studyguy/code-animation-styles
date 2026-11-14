@@ -2,6 +2,7 @@
 
 341 种用代码做动画的视觉风格，每种一份提示词。**333 种带预览图**（其中 193 种是静帧，140 种是补的示意帧），31 种带原片链接。
 
+> **English:** see [README.en.md](README.en.md) — and the picker itself has a full English UI (top-right button).
 在线挑选：**https://studyguy.github.io/code-animation-styles/**
 
 > 直接用浏览器打开 `风格挑选.html` 也能用，图片和提示词都在这一个文件里，不需要联网。
